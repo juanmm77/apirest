@@ -19,5 +19,9 @@ public class PersonService {
         return personRepository.findAll();
     }
 
+    public void deletePersonById(Integer id) {
+        personRepository.deleteById(id);
+    }
+
 }
 
