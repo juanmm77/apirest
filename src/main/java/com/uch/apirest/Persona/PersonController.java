@@ -17,8 +17,14 @@ public class PersonController {
     private final PersonService personService;
 
     @PostMapping
-    public void createPersona(@RequestBody Person person) {
-        personService.createPersona(person);
+    public ResponseEntity<String> createPersona(@RequestBody Person person) {
+        try {
+            personService.createPersona(person);
+            return ResponseEntity.ok("Persona creada correctamente");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al crear persona: " + e.getMessage());
+        }
     }
 
     @GetMapping

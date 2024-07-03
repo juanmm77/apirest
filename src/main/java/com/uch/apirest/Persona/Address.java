@@ -17,7 +17,8 @@ public class Address {
     private String state;
     private String zipCode;
 
-    @OneToOne(mappedBy = "address")
+    @ManyToOne
+    @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Person person;
 }
 
